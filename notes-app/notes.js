@@ -1,12 +1,10 @@
 const fs = require('fs')
 const chalk = require('chalk')
 
-const getNotes = () => 'Your notes...'
-
 const addNote = (title, body) => {
   const notes = loadNotes()
   const duplicateNotes = notes.filter(note => note.title === title)
-  console.log('Duplicates - ', duplicateNotes)
+
   if (duplicateNotes.length === 0) {
     notes.push({
       title: title,
@@ -66,7 +64,6 @@ const loadNotes = () => {
 }
 
 module.exports = {
-  getNotes: getNotes,
   addNote: addNote,
   removeNote: removeNote,
   listNotes: listNotes,
