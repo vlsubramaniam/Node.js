@@ -37,14 +37,16 @@ app.get('/help', (req, res) => {
 
 app.get('/help/*', (req, res) => {
   res.render('pagenotfound', {
-    error: 'Error - Cannot find the help article',
+    title: 'Error 404',
+    errorMessage: 'Cannot find the help article',
     name: 'Subramaniam'
   });
 });
 
 app.get('*', (req, res) => {
   res.render('pagenotfound', {
-    error: 'Error 404 - Page not found',
+    title: 'Error 404',
+    errorMessage: 'Page not found',
     name: 'Subramaniam'
   });
 });
