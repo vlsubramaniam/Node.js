@@ -6,11 +6,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Error 404</title>
+  <link rel="icon" href="/image/weather.png">
+  <link rel="stylesheet" href="/css/styles.css" />
 </head>
 
 <body>
-  {{>header}}
-  <p style="color: red">{{errorMessage}}</p>
+  <div class="main-content">
+    {{>header}}
+    <p style="color: red">{{errorMessage}}</p>
+  </div>
   {{>footer}}
 </body>
 
