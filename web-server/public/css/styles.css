@@ -27,9 +27,22 @@ header a {
 
 footer {
   color: #888888;
-  border-top: 1px solid #eeeeee;
+  border-top: 1px solid #cccccc;
   margin-top: 16px;
   padding: 16px 0;
+}
+
+input {
+  border: 1px solid #cccccc;
+  padding: 8px;
+}
+
+button {
+  cursor: pointer;
+  border: 1px solid #888888;
+  padding: 8px;
+  background: #888888;
+  color: #ffffff;
 }
 
 .potrait {
