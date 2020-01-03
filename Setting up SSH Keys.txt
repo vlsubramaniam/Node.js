@@ -1,0 +1,12 @@
+$ ls -a -l ~/.ssh
+
+$ ssh-keygen -t rsa -b -C 'subramaniam.vls@gmail.com'
+
+$ eval $(ssh-agent)
+
+$ ssh-add ~/..ssh/id_rsa
+
+$ cat ~/.ssh/id_rsa.pub
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCXk/C2QVORgbATT457/JbF+PO6r6j8JGXwL5x1lks552eMMR+bpm6wg7CbEgCqSnMEUAbCrRfKUKWVKnIQQdySIpBSuf2xabvxoJw5Top7MkazsMDKADPwjqUpqHq2ddfsnCGWrszWTMz1y/Kkq5PToP03esMa8rv3c2x2c1Pdu5Y0SqHC5J5UX758/bX1U9hB47lR5/bLTp4Tx+ae5V+a8g8CbDcCWPvk/KqaLaIPhFtsde94LQfZK6IL2x8PtOWEYlRqIlLaBk5K1QvjBnpJ8GyNcgGpQKppk9ozW4iiWzErPRgOuGPUQq42bzozr7zC+vSXZ7xtv1C6LMrhlxKX505fXboeixnL9BI0Mizc8LcU8lDnEUrOhEEGJs1P7kWPRcCcfGy5s44/qWI1/Lv63STNzN8WbZvpPDYQAsKj3R4PPg2SCpl9W34NKNF92YUmnhzpwoGOHHjpiILK1kP38nOMPwKZyWvy4pDESk+0z8DbSEdEbdP8BskG78KOFeoiempnDw/Dsmj1qioUBxEXQApv/KlL1xVQQ7qnhVhnppf6gKEfzf1x0J8CNo4SMFD7Qir/JIJn/c7Qre09GqaZD7s8NtHGsU/EvHodoEeDbl7UCKuAz2zK6qRmy7TNI9SbXZ1QvWWXjhtX3hYB3kWAZkHuZLtD0CQTpKPw+MVhGw== subramaniam.vls@gmail.com
+
+$ ssh -T git@github.com
