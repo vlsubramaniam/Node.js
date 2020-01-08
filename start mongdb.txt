@@ -1,0 +1,3 @@
+$: <path>/mongd.exe --dbpath=<path>
+Eg: 
+$: C:/Users/Dell/mongodb/bin/mongod.exe --dbpath=C:/Users/Dell/mongodb-data
