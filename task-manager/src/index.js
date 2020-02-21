@@ -30,22 +30,3 @@ app.listen(port, () => console.log(`Server stared at port ${port}`));
 // noQTxgfwBJNScdznA4dSft4g_xBxp8ZpkZSOQ4q6ciA -> "Signature" used to verify the token
 // */
 // myFunction();
-const multer = require('multer');
-const upload = multer({
-  dest: 'images',
-  limits: {
-    fileSize: 1000000
-  },
-  fileFilter(req, file, cb) {
-    if (!file.originalname.match(/\.(doc|docx)$/)) {
-      return cb(new Error('Please upload PDF'));
-    }
-    // cb(new Error('File must be a PDF'));
-    cb(undefined, true);
-    // cb(undefined, false);
-  }
-});
-
-app.post('/upload', upload.single('upload'), (req, res) => {
-  res.send();
-});
