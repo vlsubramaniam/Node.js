@@ -88,7 +88,7 @@ router.patch('/users/me', auth, async (req, res) => {
     allowedUpdates.includes(update)
   );
   if (!isValidUpdate) {
-    return res.send(400).send({ error: 'Inavlid updates' });
+    return res.status(400).send({ error: 'Inavlid updates' });
   }
 
   try {
