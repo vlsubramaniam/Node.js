@@ -2,7 +2,7 @@ const express = require('express');
 const dotenv = require('dotenv');
 
 // const logger = require('./middleware/logger');
-const morgon = require('morgan');
+const morgan = require('morgan');
 const bootcamps = require('./routes/bootcamps');
 
 // Load env variables
@@ -12,7 +12,7 @@ const app = express();
 
 // Dev logging middleware
 if (process.env.NODE_ENV === 'development') {
-  app.use(morgon('dev'));
+  app.use(morgan('dev'));
 }
 // app.use(logger);
 
