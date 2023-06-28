@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-// const slugify = require('slugify');
 
 const CourseSchema = new mongoose.Schema({
   title: {
@@ -39,29 +38,38 @@ const CourseSchema = new mongoose.Schema({
   },
 });
 
-// // Create bootcamp slug from the name
-// BootcampSchema.pre('save', function (next) {
-//   this.slug = slugify(this.name, { lower: true });
-//   next();
-// });
+// Static method to get average of course tuitions
+CourseSchema.statics.getAverageCost = async function (bootcampId) {
+  console.log('Calculating average cost...'.blue);
 
-// // Geocode & create location field
-// BootcampSchema.pre('save', async function (next) {
-//   const loc = await geoCoder.geocode(this.address);
-//   this.location = {
-//     type: 'Point',
-//     coordinates: [loc[0].longitude, loc[0].latitude],
-//     formattedAddress: loc[0].formattedAddress,
-//     street: loc[0].streetName,
-//     city: loc[0].city,
-//     state: loc[0].stateCode,
-//     zipcode: loc[0].zipcode,
-//     country: loc[0].countryCode,
-//   };
+  const obj = await this.aggregate([
+    {
+      $match: { bootcamp: bootcampId },
+    },
+    {
+      $group: {
+        _id: '$bootcamp',
+        averageCost: { $avg: '$tuition' },
+      },
+    },
+  ]);
+  try {
+    await this.model('Bootcamp').findByIdAndUpdate(bootcampId, {
+      averageCost: Math.ceil(obj[0].averageCost / 10) * 10,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
 
-//   // Donot save address in DB
-//   this.address = undefined;
-//   next();
-// });
+// Call getAverageCost after save
+CourseSchema.post('save', function () {
+  this.constructor.getAverageCost(this.bootcamp);
+});
+
+// Call getAverageCost after remove
+CourseSchema.pre('deleteOne', { document: true, query: false }, function () {
+  this.constructor.getAverageCost(this.bootcamp);
+});
 
 module.exports = mongoose.model('Course', CourseSchema);
